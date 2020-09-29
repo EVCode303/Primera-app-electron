@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar producto</title>
+    <link rel="stylesheet" href="css/productView.css">
+</head>
+
+<body>
+    <h3 class="product__title">Agregar nuevo producto</h3>
+    <main class="product">
+        <form action="" class="product__form" id="productForm">
+            <input type="text" placeholder="Nombre del producto" class="product__name" id="productName">
+            <input type="text" placeholder="Descripción" class="product__description" id="productDescription">
+            <input type="number" placeholder="Precio" class="product__price" id="productPrice">
+            <button type="submit" class="product__submit" id="productSubmit">Guardar</button>
+        </form>
+    </main>
+    <script>
+        require('./js/productView');
+    </script>
+</body>
+
+</html>

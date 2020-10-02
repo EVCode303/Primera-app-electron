@@ -12,6 +12,9 @@ body{
     background-color: $color-dark;
     font-family: Arial ,Helvetica, sans-serif;
     font-weight: 500;
+    background-image: linear-gradient(to top right, $color-dark 10%, #1e6169);
+    height: 100vh;
+    background-attachment: fixed;
 }
 
 .no-items-overlay{
@@ -22,6 +25,7 @@ body{
     justify-content: center;
     align-items: center;
     z-index: 10;
+    transition: all 0.5s;
 }
 
 .no-items{
@@ -56,9 +60,8 @@ body{
 
 .item{
     display: flex;
-    flex-flow: column wrap;
-    justify-content: space-around;
-    align-items: center;
+    flex-flow: row wrap;
+    justify-content: center;
     min-height: 150px;
     border-radius: 10px;
     background-color: $color-primary;
@@ -66,31 +69,40 @@ body{
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.5);
 }
 
-@mixin itemComps($border, $text-align, $font-size, $color: $color-dark){
+@mixin itemComps($border, $font-size, $width, $color: $color-dark){
     font-size: $font-size;
     border-bottom: $border;
-    width: 85%;
-    text-align: $text-align;
+    width: $width;
+    text-align: left;
     color: $color;
     padding: 0.6em 0;
     word-wrap: break-word;
 }
 
 .item__title{
-    @include itemComps(1px solid #ddd, left, 18px);
+    @include itemComps(1px solid #ddd, 18px, 85%);
+    align-self: flex-start;
 }
 
 .item__description{
-    @include itemComps(none, left, 16px);
+    @include itemComps(none, 16px, 85%);
+    align-self: center;
+}
+
+.item__group{
+    width: 85%;
+    align-self: flex-end;
 }
 
 .item__price{
-    @include itemComps(1px solid #ddd, left, 20px, rgb(173, 26, 26));
+    @include itemComps(1px solid #ddd, 20px, 100%,rgb(173, 26, 26));
+    //align-self: flex-end;
 }
 
 .item__btn{
-    width: 85%;
+    width: 100%;
     text-align: right;
+    //align-self: flex-end;
 }
 
 .item__delete{
@@ -102,6 +114,7 @@ body{
     color: rgb(173, 26, 26);
     font-size: 14px;
     margin: 1em 0;
+    user-select: none;
     transition: all 0.3s;
     outline: none;
 }   

@@ -14,7 +14,10 @@
         <form action="" class="product__form" id="productForm">
             <input type="text" placeholder="Nombre del producto" class="product__name" id="productName">
             <input type="text" placeholder="Descripción" class="product__description" id="productDescription">
-            <input type="number" placeholder="Precio" class="product__price" id="productPrice">
+            <div class="product__price-container">
+                <span class="product__money-symbol">C$</span>
+                <input type="number" placeholder="Precio" class="product__price" id="productPrice">
+            </div>
             <button type="submit" class="product__submit" id="productSubmit">Guardar</button>
         </form>
     </main>

@@ -2,8 +2,8 @@ const mainTools = require('./mainView');
 
 exports.getProducts = () => {
     let items = [];
-    for(let i in localStorage){
-        if(typeof localStorage[i] === 'string'){
+    for (let i in localStorage) {
+        if (typeof localStorage[i] === 'string') {
             items.push(JSON.parse(localStorage[i]));
         }
     }
@@ -12,14 +12,24 @@ exports.getProducts = () => {
 
 exports.save = (product) => localStorage.setItem(product.name, JSON.stringify(product));
 
+// Returns the value of the product's price in local currency
+const formatMoney = (money) => {
+    return new Intl.NumberFormat('es-NI', {
+        style: 'currency',
+        currency: 'NIO'
+    }).format(money);
+}
+
 exports.templateItem = (itemsContainer, product) => {
     itemsContainer.innerHTML += `
         <div class="item">
             <h3 class="item__title">${product.name}</h3>
             <p class="item__description">${product.description}</p>
-            <h2 class="item__price">${product.price}</h2>
-            <div class="item__btn">
-                <button type="button" class="item__delete" id="itemDelete">Delete</button>
+            <div class="item__group">
+                <h2 class="item__price">${formatMoney(product.price)}</h2>
+                <div class="item__btn">
+                    <button type="button" class="item__delete" id="itemDelete">Eliminar</button>
+                </div>
             </div>
         </div>
     `;
@@ -46,7 +56,7 @@ const deleteItem = (btnDel) => {
     let productCard = btnDel.parentElement.parentElement;
     let productName = productCard.querySelector('.item__title').innerText;
     this.getProducts().forEach((product) => {
-        if(product.name === productName) {
+        if (product.name === productName) {
             localStorage.removeItem(productName);
             productCard.remove();
             this.toggleOverlay(mainTools.overlay);
@@ -61,8 +71,4 @@ exports.deleteItemListener = () => {
     btnsDeleteItem.forEach((btnDel) => {
         btnDel.addEventListener('click', () => deleteItem(btnDel));
     });
-}   
-
-exports.clearItems = () => {
-    
 }

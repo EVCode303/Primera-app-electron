@@ -1,120 +1,145 @@
-$color-primary: #D6D979;
-$color-secondary: #6DA68B;
-$color-dark: #1C3C40;
+$color-primary: #d6d979;
+$color-secondary: #6da68b;
+$color-dark: #1c3c40;
+$color-font: #e0e0e0;
+$color-submit: rgb(94, 103, 221);
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: $color-secondary;
-    font-family: Arial ,Helvetica, sans-serif;
-    font-weight: 500;
-    height: 80vh;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-content: center;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  background-color: $color-secondary;
 }
 
-.product__title{
-    width: 85%;
-    text-align: center;
-    color: $color-secondary;
-    margin-top: 2em;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: $color-dark;
-    border-radius: 15px;
-    padding: 0.5em 0;
-    text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.1);
+.product__title {
+  width: 85%;
+  text-align: center;
+  color: $color-font;
+  margin-top: -0.5em;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: $color-dark;
+  border-radius: 15px;
+  padding: 0.5em 0;
 }
 
-.product{
-    margin-top: 1.5em;
-    width: 85%;
-    background-color: $color-dark;
-    border-radius: 15px;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
+.product {
+  margin-top: 1.5em;
+  width: 85%;
+  background-color: $color-dark;
+  border-radius: 15px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.product__form{
-    text-align: center;
+.product__form {
+  text-align: center;
 }
 
-@mixin formControls(){
-    display: inline-block;
-    width: 80%;
-    padding: 10px 5px;
-    color: #fff;
-    background-color: transparent;
-    margin: 0.6em auto;
-    border: none;
-    outline: none;
-    box-shadow: 0px 0px 2px 0px $color-secondary;
-    border-radius: 5px;
+@mixin formControls() {
+  display: inline-block;
+  width: 80%;
+  padding: 10px 5px;
+  color: #fff;
+  background-color: transparent;
+  margin: 0.6em auto;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 2px 0px $color-secondary;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
-.product__name, 
-.product__price,
-.product__description{
-    @include formControls();
-    transition: all 0.3s;
+.product__name,
+.product__description {
+  @include formControls();
+  transition: all 0.3s;
 }
 
-.product__name{
-    margin-top: 1em;
+.product__name {
+  margin-top: 1em;
+}
+
+.product__money-symbol {
+  position: absolute;
+  top: 27%;
+  left: 2%;
+  z-index: 10;
+  pointer-events: none;
+  color: #00ff88;
+}
+
+.product__price-container {
+  @include formControls();
+  position: relative;
+}
+
+.product__price {
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  border: none;
+  width: 95%;
+  padding-left: 1.1em;
+  font-size: 14px;
 }
 
 .product__price::-webkit-inner-spin-button,
-.product__price::-webkit-outer-spin-button{
-    appearance: none;    
+.product__price::-webkit-outer-spin-button {
+  appearance: none;
 }
 
 .product__name:focus,
-.product__price:focus,
-.product__description:focus{
-    box-shadow: 0px 0px 2px 3px $color-secondary;
+.product__price-container:focus,
+.product__description:focus {
+  box-shadow: 0px 0px 2px 3px $color-secondary;
 }
 
 .product__name::placeholder,
 .product__price::placeholder,
-.product__description::placeholder{
-    color: $color-secondary;
+.product__description::placeholder {
+  color: $color-secondary;
 }
 
 .product__name:focus::placeholder,
 .product__price:focus::placeholder,
-.product__description:focus::placeholder{
-    color: rgb(238, 238, 238);
+.product__description:focus::placeholder {
+  color: rgb(238, 238, 238);
 }
 
-.product__submit{
-    display: inline-block;
-    padding: 0.5em 1em;
-    margin-bottom: 1em;
-    color: rgb(94, 103, 221);
-    background-color: transparent;
-    font-size: 14px;
-    font-weight: 500;
-    border: 1px solid rgb(94, 103, 221);
-    outline: none;
-    border-radius: 10px;
-    margin-top: 0.5em;
-    transition: all 0.3s;
+.product__submit {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  color: $color-submit;
+  background-color: transparent;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid$color-submit;
+  outline: none;
+  border-radius: 10px;
+  margin-top: 0.5em;
+  transition: all 0.3s;
 }
 
-.product__submit:hover, 
-.product__submit:focus{
-    background-color:  rgb(94, 103, 221);
-    color: #fff;
+.product__submit:hover,
+.product__submit:focus {
+  background-color: $color-submit;
+  color: #fff;
 }
 
-.product__submit:active{
-    background-color: rgb(68, 75, 184);
+.product__submit:active {
+  background-color: rgb(68, 75, 184);
 }
